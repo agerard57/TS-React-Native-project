@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "TS-React-Native-project",
+    "slug": "TS-React-Native-project",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./public/images/icon.png",
+    "scheme": "TS-React-Native-project",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./public/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./public/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./public/images/favicon.png"
+    }
+  }
+}
