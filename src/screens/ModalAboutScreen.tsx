@@ -1,10 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import { Platform, StyleSheet } from "react-native";
 
-import EditScreenInfo from "../components/EditScreenInfo";
-import { Text, View } from "../components/Themed";
+import { AboutContent, Themed } from "../components";
 
 export const ModalAboutScreen = () => {
+  const { Text, View } = Themed;
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>About</Text>
@@ -13,7 +14,8 @@ export const ModalAboutScreen = () => {
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      <EditScreenInfo path="/screens/ModalAboutScreen.tsx" />
+
+      <AboutContent />
 
       <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
     </View>

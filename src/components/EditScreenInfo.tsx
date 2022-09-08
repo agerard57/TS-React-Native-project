@@ -3,9 +3,11 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 
 import { Colors } from "../constants";
 import { MonoText } from "./StyledText";
-import { Text, View } from "./Themed";
+import { Themed } from "./Themed";
 
-export default function EditScreenInfo({ path }: { path: string }) {
+export const EditScreenInfo = ({ path }: { path: string }) => {
+  const { Text, View } = Themed;
+
   return (
     <View>
       <View style={styles.getStartedContainer}>
@@ -45,7 +47,7 @@ export default function EditScreenInfo({ path }: { path: string }) {
       </View>
     </View>
   );
-}
+};
 
 function handleHelpPress() {
   WebBrowser.openBrowserAsync(
