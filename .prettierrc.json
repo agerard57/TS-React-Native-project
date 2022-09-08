@@ -1,4 +1,0 @@
-{
-  "importOrderSeparation": true,
-  "importOrder": ["^[^.](.*)$", "^[./]"]
-}

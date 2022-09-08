@@ -5,8 +5,12 @@
       "path": "."
     },
     {
-      "name": "Src",
-      "path": "./src"
+      "name": "Server",
+      "path": "./api"
+    },
+    {
+      "name": "Client",
+      "path": "./client"
     }
   ],
   "settings": {
