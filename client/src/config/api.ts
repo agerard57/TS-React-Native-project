@@ -1,3 +1,3 @@
 export const api = {
-  url: "http://localhost:3200",
+  url: "http://192.168.1.33:3200",
 };

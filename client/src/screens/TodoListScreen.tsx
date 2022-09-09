@@ -5,13 +5,15 @@ import { useTodoList } from "../hooks";
 
 export const TodoListScreen = () => {
   const { View } = Themed;
-  const { todoLists } = useTodoList();
+  const { todoLists, onDelete } = useTodoList();
 
   return (
     <View style={styles.container}>
       <FlatList
         data={todoLists}
-        renderItem={({ item }) => <ListContainer {...item} />}
+        renderItem={({ item }) => (
+          <ListContainer {...item} onDelete={onDelete} />
+        )}
         keyExtractor={(item) => item.listName}
       />
     </View>

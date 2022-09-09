@@ -1,11 +1,20 @@
 import { useNavigation } from "@react-navigation/native";
-import { Button, TouchableHighlight } from "react-native";
+import {
+  Button,
+  GestureResponderEvent,
+  TouchableHighlight,
+} from "react-native";
 import { StyleSheet } from "react-native";
 
 import { Todo } from "../../interfaces";
 import { Themed } from "../Themed";
 
-export const TodoCard = ({ todo }: { todo: Todo }) => {
+type Props = {
+  todo: Todo;
+  onDelete(id: string): (event: GestureResponderEvent) => void;
+};
+
+export const TodoCard = ({ todo, onDelete }: Props) => {
   const navigation = useNavigation();
 
   const { Text, View } = Themed;
@@ -50,9 +59,7 @@ export const TodoCard = ({ todo }: { todo: Todo }) => {
                   <Button
                     title="Delete"
                     color="#ff5c5c"
-                    onPress={() => {
-                      console.log("delete");
-                    }}
+                    onPress={onDelete(todo._id)}
                   />
                 </View>
               </View>

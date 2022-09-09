@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, GestureResponderEvent, StyleSheet } from "react-native";
 
 import { Todo } from "../../interfaces";
 import { Themed } from "../Themed";
@@ -7,9 +7,10 @@ import { TodoCard } from "./TodoCard";
 type Props = {
   listName: string;
   todos: Todo[];
+  onDelete(id: string): (event: GestureResponderEvent) => void;
 };
 
-export const ListContainer = ({ listName, todos }: Props) => {
+export const ListContainer = ({ listName, todos, onDelete }: Props) => {
   const { Text, View } = Themed;
 
   return (
@@ -22,7 +23,7 @@ export const ListContainer = ({ listName, todos }: Props) => {
       />
       <FlatList
         data={todos}
-        renderItem={({ item }) => <TodoCard todo={item} />}
+        renderItem={({ item }) => <TodoCard todo={item} onDelete={onDelete} />}
         /* extraData={selectedId} */
         keyExtractor={(item) => item._id}
         ListEmptyComponent={() => <Text>No todos</Text>}

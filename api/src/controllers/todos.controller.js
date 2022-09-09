@@ -68,7 +68,7 @@ exports.update = (req, res) => {
 // Delete controller
 exports.delete = (req, res) => {
   const id = req.params.id;
-  TodosModel.deleteOne({ id: id }, (err) => {
+  TodosModel.deleteOne({ _id: id }, (err) => {
     if (err) res.send(err);
     res.json({
       message: "Deleted!",
