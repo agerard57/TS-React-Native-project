@@ -12,19 +12,25 @@ declare global {
 }
 
 type RootStackParamList = {
-  Root: NavigatorScreenParams<RootTabParamList> | undefined;
-  About: undefined;
-  Photo: undefined;
-  NotFound: undefined;
+  root: NavigatorScreenParams<RootTabParamList> | undefined;
+  "todo-list": NavigatorScreenParams<RootTabParamList> | undefined;
+  "todo-view": { id: string } | undefined;
+  "todo-modify": { id: string } | undefined;
+  notFound: undefined;
+  about: undefined;
 };
 
 type RootStackScreenProps<Screen extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, Screen>;
 
 type RootTabParamList = {
-  Home: undefined;
-  Photo: undefined;
-  TabTwo: undefined;
+  home: undefined;
+  "todo-list": undefined;
+  "todo-add": undefined;
+  "todo-modify": undefined;
+  "todo-view": undefined;
+  notFound: undefined;
+  about: undefined;
 };
 
 type RootTabScreenProps<Screen extends keyof RootTabParamList> =
