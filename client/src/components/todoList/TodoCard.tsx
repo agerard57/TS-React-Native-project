@@ -9,71 +9,113 @@ export const TodoCard = ({ todo }: { todo: Todo }) => {
   const navigation = useNavigation();
 
   const { Text, View } = Themed;
+
   const cropDescription = (description: string) => {
-    if (description.length > 30) {
-      return description.slice(0, 30) + "...";
+    if (description.length > 100) {
+      return description.slice(0, 100) + "...";
     }
     return description;
   };
 
   return (
-    <View style={styles.todoCard}>
-      <TouchableHighlight
-        style={styles.todoCard}
-        onPress={() => {
-          navigation.navigate("todo-view", { id: todo._id });
-        }}
-      >
-        <View style={styles.todoCardContent}>
-          <Text style={styles.todoCardTitle}>{todo.title}</Text>
-          <Text
-            style={styles.todoCardCompleted}
-            onPress={() => console.log("pressed")}
-          >
-            {todo.description
-              ? cropDescription(todo.description)
-              : "No description"}
-          </Text>
-          <Button
-            title="Delete"
-            onPress={() => console.log("pressed")}
-            color="#f00"
-          />
-        </View>
-      </TouchableHighlight>
-    </View>
+    <TouchableHighlight
+      style={styles.todoContainer}
+      onPress={() => {
+        navigation.navigate("todo-view", { id: todo._id });
+      }}
+    >
+      <View style={styles.todoCard}>
+        <>
+          <View>
+            <Text style={styles.todoCardTitle}>{todo.title}</Text>
+            <View style={styles.separator} />
+            <View style={styles.todoCardContentContainer}>
+              <Text>
+                {todo.description
+                  ? cropDescription(todo.description)
+                  : "No description"}
+              </Text>
+              <Text style={styles.todoCardAuthor}>By {todo.author}</Text>
+              <View style={styles.contentSeparator} />
+              <View style={styles.buttons}>
+                <View style={styles.button}>
+                  <Button
+                    title="Edit"
+                    onPress={() => {
+                      navigation.navigate("todo-edit", { id: todo._id });
+                    }}
+                  />
+                </View>
+                <View style={styles.button}>
+                  <Button
+                    title="Delete"
+                    color="#ff5c5c"
+                    onPress={() => {
+                      console.log("delete");
+                    }}
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </>
+      </View>
+    </TouchableHighlight>
   );
 };
 
 const styles = StyleSheet.create({
-  todoCard: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+  todoContainer: {
     alignItems: "center",
-    padding: 10,
-    margin: 10,
-    backgroundColor: "#fff",
-    borderRadius: 5,
+    justifyContent: "center",
+    borderColor: "#a9a9a9",
+    borderRadius: 10,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 0,
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5,
+    borderWidth: 1,
+    marginVertical: 10,
   },
-  todoCardContent: {
-    flexDirection: "column",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
+  separator: {
+    marginVertical: 10,
+    width: "100%",
+    height: 1,
+    backgroundColor: "grey",
+  },
+  contentSeparator: {
+    marginVertical: 10,
+    width: "30%",
+    alignSelf: "center",
+    height: 1,
+    backgroundColor: "#d1d3d4",
+  },
+  todoCard: {
+    width: "98%",
+    margin: 10,
+  },
+  todoCardContentContainer: {
+    padding: 10,
+  },
+  todoCardAuthor: {
+    fontSize: 12,
+    paddingTop: 10,
+    color: "grey",
   },
   todoCardTitle: {
     fontSize: 18,
+    paddingTop: 10,
+    paddingHorizontal: 10,
     fontWeight: "bold",
+    flex: 1,
+    textAlign: "center",
   },
-  todoCardCompleted: {
-    fontSize: 14,
-    color: "#999",
+  button: { width: "40%" },
+  buttons: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
   },
 });

@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginVertical: 30,
+    backgroundColor: "none",
     padding: 20,
     borderColor: "grey",
     borderWidth: 1,
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   separator: {
-    marginVertical: 30,
+    marginVertical: 20,
     height: 1,
     width: "80%",
   },
