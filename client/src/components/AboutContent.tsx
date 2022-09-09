@@ -1,7 +1,7 @@
-import React from "react";
 import { Linking } from "react-native";
 import { StyleSheet } from "react-native";
-import { Themed } from "../components/Themed";
+
+import { Themed } from "./Themed";
 
 export const AboutContent = () => {
   const { Text, View } = Themed;

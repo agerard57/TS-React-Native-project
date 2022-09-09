@@ -1,7 +1,7 @@
 import { Text as DefaultText, View as DefaultView } from "react-native";
 
-import { ThemedTypes } from "../types";
 import { useThemeColor } from "../hooks";
+import { ThemedTypes } from "../types";
 
 const Text = (props: ThemedTypes["TextProps"]) => {
   const { style, lightColor, darkColor, ...otherProps } = props;

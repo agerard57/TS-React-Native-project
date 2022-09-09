@@ -1,8 +1,6 @@
-import React from "react";
 import { StyleSheet } from "react-native";
 
-import { EditScreenInfo } from "../components";
-import { Themed } from "../components/Themed";
+import { EditScreenInfo, Themed } from "../components";
 
 export const TabTwoScreen = () => {
   const { Text, View } = Themed;

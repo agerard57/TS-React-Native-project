@@ -1,9 +1,10 @@
-import { StyleSheet } from "react-native";
-
-import { useState, useEffect } from "react";
-import { Button, Image, View } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import { useState } from "react";
+import { StyleSheet } from "react-native";
+import { Button, Image, View } from "react-native";
+
 import { useToast } from "../hooks";
+
 export const PhotoContent = () => {
   const [image, setImage] = useState<string>("");
 
@@ -16,7 +17,6 @@ export const PhotoContent = () => {
       aspect: [4, 3],
       quality: 1,
     });
-    console.log(result);
 
     if (!result.cancelled) {
       // Check if the photo is less than 1MB
@@ -34,7 +34,7 @@ export const PhotoContent = () => {
       }
 
       setImage(result.uri);
-      toast("DeezNuts", "success");
+      toast("Your photo has been uploaded!", "success");
     }
   };
 
