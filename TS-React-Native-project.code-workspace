@@ -17,7 +17,7 @@
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
     "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
-    "todohighlight.keywords": ["TODO", "FIX"],
+    "todohighlight.keywords": ["FIX"],
     "typescript.preferences.importModuleSpecifier": "relative",
     "typescript.tsc.autoDetect": "off",
     "[typescript]": {
@@ -48,6 +48,6 @@
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "discord.enabled": true,
-    "cSpell.words": ["Pressable"]
+    "cSpell.words": ["Pressable", "todos"]
   }
 }
