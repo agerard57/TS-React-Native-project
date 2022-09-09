@@ -1,9 +1,8 @@
 import { StyleSheet } from "react-native";
 
-import { EditScreenInfo, Themed } from "../components";
-import { RootTabScreenProps } from "../types";
+import { HomeContent, Themed } from "../components";
 
-export const HomeScreen = ({ navigation }: RootTabScreenProps<"Home">) => {
+export const HomeScreen = () => {
   const { Text, View } = Themed;
 
   return (
@@ -14,7 +13,7 @@ export const HomeScreen = ({ navigation }: RootTabScreenProps<"Home">) => {
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      <EditScreenInfo path="/screens/HomeScreen.tsx" />
+      <HomeContent path="/screens/HomeScreen.tsx" />
     </View>
   );
 };
