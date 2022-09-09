@@ -72,10 +72,10 @@ export const BottomTabNavigator = () => {
         })}
       />
       <BottomTab.Screen
-        name="todo-modify"
+        name="todo-edit"
         component={TabTwoScreen}
         options={{
-          title: "Modify todo",
+          title: "Edit todo",
           tabBarButton: () => null,
         }}
       />

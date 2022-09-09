@@ -15,7 +15,7 @@ type RootStackParamList = {
   root: NavigatorScreenParams<RootTabParamList> | undefined;
   "todo-list": NavigatorScreenParams<RootTabParamList> | undefined;
   "todo-view": { id: string } | undefined;
-  "todo-modify": { id: string } | undefined;
+  "todo-edit": { id: string } | undefined;
   notFound: undefined;
   about: undefined;
 };
@@ -27,7 +27,7 @@ type RootTabParamList = {
   home: undefined;
   "todo-list": undefined;
   "todo-add": undefined;
-  "todo-modify": undefined;
+  "todo-edit": undefined;
   "todo-view": undefined;
   notFound: undefined;
   about: undefined;

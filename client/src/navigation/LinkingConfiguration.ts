@@ -18,7 +18,7 @@ export const LinkingConfiguration: LinkingOptions<RootStackParamList> = {
           "todo-list": "todo-list",
         },
       },
-      "todo-modify": "todo-modify/:id",
+      "todo-edit": "todo-edit/:id",
       "todo-view": "todo-view/:id",
       about: "about",
       notFound: "*",
