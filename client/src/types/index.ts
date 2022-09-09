@@ -6,3 +6,5 @@ export {
 } from "./RootTypes";
 
 export { ThemedTypes } from "./ThemedTypes";
+
+export type { TodoType } from "./TodoType";
