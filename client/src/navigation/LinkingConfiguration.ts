@@ -7,23 +7,21 @@ export const LinkingConfiguration: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.createURL("/")],
   config: {
     screens: {
-      Root: {
+      root: {
         screens: {
-          Home: {
-            screens: {
-              HomeScreen: "one",
-            },
-          },
-          TabTwo: {
-            screens: {
-              TabTwoScreen: "two",
-            },
-          },
+          home: "home",
         },
       },
-      Photo: "photo",
-      About: "about",
-      NotFound: "*",
+      "todo-list": {
+        screens: {
+          "todo-add": "todo-add",
+          "todo-list": "todo-list",
+        },
+      },
+      "todo-modify": "todo-modify/:id",
+      "todo-view": "todo-view/:id",
+      about: "about",
+      notFound: "*",
     },
   },
 };

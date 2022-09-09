@@ -3,23 +3,22 @@ import {
   DefaultTheme,
   DarkTheme,
 } from "@react-navigation/native";
-import * as React from "react";
 import { ColorSchemeName } from "react-native";
 
+import { BottomTabNavigator } from "./BottomTabNavigator";
 import { LinkingConfiguration } from "./LinkingConfiguration";
-import { RootNavigator } from "./StackNavigator";
 
-export const Navigation = ({
-  colorScheme,
-}: {
+type Props = {
   colorScheme: ColorSchemeName;
-}) => {
+};
+
+export const Navigation = ({ colorScheme }: Props) => {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
       theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
     >
-      <RootNavigator />
+      <BottomTabNavigator />
     </NavigationContainer>
   );
 };
