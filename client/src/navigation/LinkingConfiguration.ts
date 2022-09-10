@@ -1,25 +1,17 @@
 import { LinkingOptions } from "@react-navigation/native";
 import * as Linking from "expo-linking";
 
-import { RootStackParamList } from "../types";
+import { RootTabParamList } from "../types";
 
-export const LinkingConfiguration: LinkingOptions<RootStackParamList> = {
+export const LinkingConfiguration: LinkingOptions<RootTabParamList> = {
   prefixes: [Linking.createURL("/")],
   config: {
     screens: {
-      root: {
-        screens: {
-          home: "home",
-        },
-      },
-      "todo-list": {
-        screens: {
-          "todo-add": "todo-add",
-          "todo-list": "todo-list",
-        },
-      },
-      "todo-edit": "todo-edit/:id",
-      "todo-view": "todo-view/:id",
+      home: "home",
+      "todo-list": "todo/list",
+      "todo-add": "todo/add",
+      "todo-edit": "todo/edit/:id",
+      "todo-view": "todo/view/:id",
       about: "about",
       notFound: "*",
     },

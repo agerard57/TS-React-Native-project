@@ -1,10 +1,10 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { ModalAboutScreen } from "../screens";
-import { RootStackParamList } from "../types";
+import { RootTabParamList } from "../types";
 import { BottomTabNavigator } from "./BottomTabNavigator";
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator<RootTabParamList>();
 
 // Stack navigator is not used in this project (because of bottom tab navigation),
 // but it is here for reference.
@@ -15,7 +15,7 @@ export const RootNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="root"
+        name="home"
         component={BottomTabNavigator}
         options={{ headerShown: false }}
       />
