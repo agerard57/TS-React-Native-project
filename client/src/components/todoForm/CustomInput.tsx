@@ -1,15 +1,9 @@
-import { useEffect } from "react";
 import { TextInput, StyleSheet } from "react-native";
 
-import { Themed } from "./Themed";
+import { FormTypes } from "../../types";
+import { Themed } from "../Themed";
 
-export const CustomInput = (props: {
-  multiline?: boolean;
-  numberOfLines?: number;
-  field?: any;
-  form?: any;
-  required?: boolean;
-}) => {
+export const CustomInput = (props: FormTypes["field"]) => {
   const {
     field: { name, onBlur, onChange, value },
     form: { errors, touched, setFieldTouched },
