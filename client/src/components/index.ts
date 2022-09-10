@@ -4,4 +4,4 @@ export { MonoText } from "./StyledText";
 export { Themed } from "./Themed";
 export { HomeContent } from "./HomeContent";
 export { ListContainer } from "./todoList";
-export { CustomInput } from "./CustomInput";
+export { TodoForm } from "./todoForm";
