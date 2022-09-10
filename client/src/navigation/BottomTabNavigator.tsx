@@ -10,6 +10,7 @@ import {
   TodoListScreen,
   TodoFormScreen,
   NotFoundScreen,
+  ViewTodoScreen,
 } from "../screens";
 import { RootTabParamList, RootTabScreenProps } from "../types";
 import { TabBarIcon } from "./TabBarIcon";
@@ -89,14 +90,16 @@ export const BottomTabNavigator = () => {
             title: "Edit task",
             tabBarButton: () => null,
           }}
-        />        <BottomTab.Screen
+        />       
+      */}
+      <BottomTab.Screen
         name="todo-view"
-        component={TabTwoScreen}
+        component={ViewTodoScreen}
         options={{
           title: "View task",
           tabBarButton: () => null,
         }}
-      /> */}
+      />
       <BottomTab.Screen
         name="about"
         component={ModalAboutScreen}

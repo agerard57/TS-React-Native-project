@@ -8,10 +8,10 @@ declare global {
 
 type RootTabParamList = {
   home: undefined;
-  "todo-list": /* { refresh?: "true" } | */ undefined;
+  "todo-list": undefined;
   "todo-add": undefined;
-  "todo-edit": undefined;
-  "todo-view": undefined;
+  "todo-edit": { id: string };
+  "todo-view": { id: string };
   notFound: undefined;
   about: undefined;
 };
