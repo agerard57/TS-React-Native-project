@@ -1,6 +1,6 @@
 import { api } from "../config";
 
-const url = (todoId: string) => `${api.url}/todos/${todoId}`;
+const url = (todoId: string) => `${api.url}/todo/${todoId}`;
 
 export const deleteTodo = async (todoId: string) => {
   try {
