@@ -7,7 +7,7 @@ export interface Todo {
   description?: string;
   fav: boolean;
   author: string;
-  photoUrl?: string;
+  imageUrl?: string;
 }
 
 export interface TodoList {
@@ -22,5 +22,5 @@ export const TodoInitializer = {
   description: "",
   fav: false,
   author: "",
-  photoUrl: "",
+  imageUrl: "",
 };

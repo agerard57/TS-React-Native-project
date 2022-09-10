@@ -10,6 +10,7 @@ import {
   ModalAboutScreen,
   TodoListScreen,
 } from "../screens";
+import { TodoFormScreen } from "../screens/TodoFormScreen";
 import { RootTabParamList, RootTabScreenProps } from "../types";
 import { TabBarIcon } from "./TabBarIcon";
 
@@ -75,15 +76,15 @@ export const BottomTabNavigator = () => {
         name="todo-edit"
         component={TabTwoScreen}
         options={{
-          title: "Edit todo",
+          title: "Edit task",
           tabBarButton: () => null,
         }}
       />
       <BottomTab.Screen
         name="todo-add"
-        component={TabTwoScreen}
+        component={TodoFormScreen}
         options={{
-          title: "Add todo",
+          title: "Add task",
           tabBarButton: () => null,
         }}
       />
@@ -91,7 +92,7 @@ export const BottomTabNavigator = () => {
         name="todo-view"
         component={TabTwoScreen}
         options={{
-          title: "View todo",
+          title: "View task",
           tabBarButton: () => null,
         }}
       />
