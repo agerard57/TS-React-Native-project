@@ -1,8 +1,8 @@
-import { TodoType } from "../types";
+import { TodoTypes } from "../types";
 
 export interface Todo {
   _id: string;
-  list: TodoType["list"];
+  list: TodoTypes["list"];
   title: string;
   description?: string;
   fav: boolean;
@@ -11,13 +11,13 @@ export interface Todo {
 }
 
 export interface TodoList {
-  listName: TodoType["list"];
+  listName: TodoTypes["list"];
   todos: Todo[];
 }
 
 export const TodoInitializer = {
   _id: "",
-  list: "TODO" as TodoType["list"],
+  list: "TODO" as TodoTypes["list"],
   title: "",
   description: "",
   fav: false,
