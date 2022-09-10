@@ -19,22 +19,22 @@ export const PhotoContent = () => {
     });
 
     if (!result.cancelled) {
-      // Check if the photo is less than 1MB
+      // Check if the image is less than 1MB
       if (result.uri.length > 3000000) {
         toast(
-          "The photo is too large. Your photo must be less than 3MB in size.",
+          "The image is too large. Your image must be less than 3MB in size.",
           "error"
         );
         return;
       }
-      // Check if the photo is square
+      // Check if the image is square
       if (result.width !== result.height) {
-        toast("The photo must be square.", "error");
+        toast("The image must be square.", "error");
         return;
       }
 
       setImage(result.uri);
-      toast("Your photo has been uploaded!", "success");
+      toast("Your image has been uploaded!", "success");
     }
   };
 
