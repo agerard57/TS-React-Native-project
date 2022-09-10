@@ -6,7 +6,7 @@ module.exports = function (app) {
 
   // GET todo by id / PUT to update a todo by id / DELETE todo by id
   app
-    .route("/todos/:id")
+    .route("/todo/:id([0-9a-f]{24})")
     .get(todosController.getOne)
     .put(todosController.update)
     .delete(todosController.delete);
