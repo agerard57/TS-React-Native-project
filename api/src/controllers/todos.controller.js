@@ -12,7 +12,7 @@ exports.getAll = (_req, res) => {
 // Get one controller
 exports.getOne = (req, res) => {
   const id = req.params.id;
-  TodosModel.findOne({ id: id }).then((todos) => {
+  TodosModel.findOne({ _id: id }).then((todos) => {
     res.json(todos);
   });
 };
@@ -51,7 +51,7 @@ exports.update = (req, res) => {
     fav: req.body.fav,
     author: req.body.author,
   };
-  const findById = { id: req.params.id };
+  const findById = { _id: req.params.id };
 
   TodosModel.findOneAndReplace(findById, updateOptions, { new: true })
     .then((message) => {
