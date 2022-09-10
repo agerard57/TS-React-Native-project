@@ -6,6 +6,7 @@ const todoOptions = (request) => {
     description: request.content,
     list: request.list,
     User: request.image.fileName,
+    imageUrl: request.image.image.fileName,
     author: request.author,
   };
 };
