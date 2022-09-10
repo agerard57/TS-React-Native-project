@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { useState, useEffect } from "react";
 import { Alert, GestureResponderEvent } from "react-native";
 
@@ -11,9 +12,12 @@ type TodoListManager = () => {
 };
 
 export const useTodoList: TodoListManager = () => {
-  const [todos, setTodos] = useState<Todo[]>([TodoInitializer]);
-  const lists = ["TODO", "IN PROGRESS", "DONE"] as const;
+  const navigation = useNavigation();
   const { toast } = useToast();
+
+  const [todos, setTodos] = useState<Todo[]>([TodoInitializer]);
+
+  const lists = ["TODO", "IN PROGRESS", "DONE"] as const;
 
   const todoLists: TodoList[] = lists.map((listName) => {
     return {
@@ -44,6 +48,13 @@ export const useTodoList: TodoListManager = () => {
 
   useEffect(() => {
     getTodos().then((todos: Todo[]) => setTodos(todos));
+
+    // This will get the new task after adding it or editing it
+    const willFocusSubscription = navigation.addListener("focus", () => {
+      getTodos().then((todos: Todo[]) => setTodos(todos));
+    });
+
+    return willFocusSubscription;
   }, []);
 
   return { todoLists, onDelete };
