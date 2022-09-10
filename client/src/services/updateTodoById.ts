@@ -1,12 +1,14 @@
 import { api } from "../config";
 import { FormTypes } from "../types";
 
-const url = `${api.url}/todos`;
+const url = (userId: string) => `${api.url}/todo/${userId}`;
 
-export const postTodo = async (values: FormTypes["values"]) => {
+export const getTodos = async (
+  values: { id: string } & FormTypes["values"]
+) => {
   try {
-    const response = await fetch(url, {
-      method: "POST",
+    const response = await fetch(url(values.id), {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
