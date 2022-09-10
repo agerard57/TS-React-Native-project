@@ -4,12 +4,16 @@
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
-    "start": "cd api && npm start",
-    "clean": "npm --prefix ./api run clean && npm --prefix ./client run clean",
-    "init": "npm run clean && npm --prefix ./api i && npm --prefix ./client i",
+    "install-all": "npm run clean && npm i && npm --prefix ./api i && npm --prefix ./client i",
+    "start-all": "concurrently \"npm run start:api\" \"npm run start:client\"",
+    "clean": "rm -rf node_modules",
+    "clean-all": "npm --prefix ./api run clean && npm --prefix ./client run clean",
     "start:api": "npm --prefix ./api run start",
     "start:client": "npm --prefix ./client run start"
   },
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^7.4.0"
+  }
 }
