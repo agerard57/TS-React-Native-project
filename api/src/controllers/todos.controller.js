@@ -1,5 +1,15 @@
 const TodosModel = require("../models/todos.model");
 
+const todoOptions = (request) => {
+  return {
+    title: request.title,
+    description: request.content,
+    list: request.list,
+    User: request.image.fileName,
+    author: request.author,
+  };
+};
+
 // //////////////////
 // Get all controller
 exports.getAll = (_req, res) => {
@@ -12,23 +22,17 @@ exports.getAll = (_req, res) => {
 // Get one controller
 exports.getOne = (req, res) => {
   const id = req.params.id;
-  TodosModel.findOne({ _id: id }).then((todos) => {
-    res.json(todos);
+
+  TodosModel.findById(id, (err, todo) => {
+    if (err) res.send(err);
+    res.json(todo);
   });
 };
 
 // //////////////////
 // Add controller
 exports.add = (req, res) => {
-  const addOptions = {
-    title: req.body.title,
-    description: req.body.content,
-    list: req.body.list,
-    image: req.body.image.fileName,
-    author: req.body.author,
-  };
-
-  const todo = new TodosModel(addOptions);
+  const todo = new TodosModel(todoOptions(req.body));
 
   todo
     .save()
@@ -44,16 +48,9 @@ exports.add = (req, res) => {
 // //////////////////
 // Update controller
 exports.update = (req, res) => {
-  const updateOptions = {
-    title: req.body.title,
-    description: req.body.description,
-    list: req.body.list,
-    fav: req.body.fav,
-    author: req.body.author,
-  };
   const findById = { _id: req.params.id };
 
-  TodosModel.findOneAndReplace(findById, updateOptions, { new: true })
+  TodosModel.findOneAndReplace(findById, todoOptions(req.body), { new: true })
     .then((message) => {
       res.json(message);
     })
