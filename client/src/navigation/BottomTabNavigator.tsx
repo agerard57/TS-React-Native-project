@@ -4,12 +4,7 @@ import { Pressable } from "react-native";
 
 import { Colors } from "../constants";
 import { useColorScheme } from "../hooks";
-import {
-  HomeScreen,
-  TabTwoScreen,
-  ModalAboutScreen,
-  TodoListScreen,
-} from "../screens";
+import { HomeScreen, ModalAboutScreen, TodoListScreen } from "../screens";
 import { TodoFormScreen } from "../screens/TodoFormScreen";
 import { RootTabParamList, RootTabScreenProps } from "../types";
 import { TabBarIcon } from "./TabBarIcon";
@@ -72,14 +67,14 @@ export const BottomTabNavigator = () => {
           ),
         })}
       />
-      <BottomTab.Screen
+      {/*       <BottomTab.Screen
         name="todo-edit"
         component={TabTwoScreen}
         options={{
           title: "Edit task",
           tabBarButton: () => null,
         }}
-      />
+      /> */}
       <BottomTab.Screen
         name="todo-add"
         component={TodoFormScreen}
@@ -88,14 +83,14 @@ export const BottomTabNavigator = () => {
           tabBarButton: () => null,
         }}
       />
-      <BottomTab.Screen
+      {/*       <BottomTab.Screen
         name="todo-view"
         component={TabTwoScreen}
         options={{
           title: "View task",
           tabBarButton: () => null,
         }}
-      />
+      /> */}
       <BottomTab.Screen
         name="about"
         component={ModalAboutScreen}
