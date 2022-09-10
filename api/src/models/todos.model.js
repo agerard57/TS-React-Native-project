@@ -3,15 +3,15 @@ const mongoose = require("mongoose");
 const TodosSchema = mongoose.Schema(
   {
     title: { type: String, required: true },
-    description: { type: String, required: true },
+    description: { type: String },
     list: {
       type: String,
       required: true,
-      default: "todo",
       set: (list) => list.toUpperCase(),
     },
     fav: { type: Boolean, default: false },
-    author: { type: String, default: "Unknown" },
+    image: { type: String },
+    author: { type: String, required: true },
   },
   { toJSON: { getters: true } }
 );

@@ -22,23 +22,22 @@ exports.getOne = (req, res) => {
 exports.add = (req, res) => {
   const addOptions = {
     title: req.body.title,
-    description: req.body.description,
+    description: req.body.content,
     list: req.body.list,
-    fav: req.body.fav,
+    image: req.body.image.fileName,
     author: req.body.author,
   };
-  console.log(req.body);
 
   const todo = new TodosModel(addOptions);
 
   todo
     .save()
-    .then((message) => {
-      res.json(message);
+    .then((_message) => {
+      res.json("Your todo has been added!");
     })
-    .catch((error) => {
+    .catch((_error) => {
       res.status(500);
-      res.json(error);
+      res.json("An error occured!");
     });
 };
 
