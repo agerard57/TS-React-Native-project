@@ -1,7 +1,6 @@
-import { FontAwesome } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Pressable } from "react-native";
 
+import { HeaderBarIcon, TabBarIcon } from "../components";
 import { Colors } from "../constants";
 import { useColorScheme } from "../hooks";
 import {
@@ -13,7 +12,6 @@ import {
   ViewTodoScreen,
 } from "../screens";
 import { RootTabParamList, RootTabScreenProps } from "../types";
-import { TabBarIcon } from "./TabBarIcon";
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
@@ -34,19 +32,10 @@ export const BottomTabNavigator = () => {
           title: "Home",
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
-            <Pressable
+            <HeaderBarIcon
+              iconName="info-circle"
               onPress={() => navigation.navigate("about")}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}
-            >
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
+            />
           ),
         })}
       />
@@ -58,29 +47,26 @@ export const BottomTabNavigator = () => {
             title: "Todo list",
             tabBarIcon: ({ color }) => <TabBarIcon name="bars" color={color} />,
             headerRight: () => (
-              <Pressable
-                onPress={() => navigation.navigate("todo-add")}
-                style={({ pressed }) => ({
-                  opacity: pressed ? 0.5 : 1,
-                })}
-              >
-                <FontAwesome
-                  name="plus-circle"
-                  size={25}
-                  color={Colors[colorScheme].text}
-                  style={{ marginRight: 15 }}
-                />
-              </Pressable>
+              <HeaderBarIcon
+                iconName="plus-circle"
+                onPress={() => navigation.goBack()}
+              />
             ),
           })}
         />
         <BottomTab.Screen
           name="todo-add"
           component={TodoFormScreen}
-          options={{
+          options={({ navigation }: RootTabScreenProps<"todo-add">) => ({
             title: "Add task",
             tabBarButton: () => null,
-          }}
+            headerRight: () => (
+              <HeaderBarIcon
+                iconName="times-circle"
+                onPress={() => navigation.navigate("todo-list")}
+              />
+            ),
+          })}
         />
       </BottomTab.Group>
       {/*       <BottomTab.Screen
@@ -89,6 +75,7 @@ export const BottomTabNavigator = () => {
           options={{
             title: "Edit task",
             tabBarButton: () => null,
+            
           }}
         />       
       */}
@@ -103,7 +90,16 @@ export const BottomTabNavigator = () => {
       <BottomTab.Screen
         name="about"
         component={ModalAboutScreen}
-        options={{ title: "About", tabBarButton: () => null }}
+        options={({ navigation }: RootTabScreenProps<"about">) => ({
+          title: "About",
+          tabBarButton: () => null,
+          headerRight: () => (
+            <HeaderBarIcon
+              iconName="times-circle"
+              onPress={() => navigation.goBack()}
+            />
+          ),
+        })}
       />
       <BottomTab.Screen
         name="notFound"
