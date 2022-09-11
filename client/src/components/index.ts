@@ -5,4 +5,4 @@ export { Themed } from "./Themed";
 export { HomeContent } from "./HomeContent";
 export { ListContainer } from "./todoList";
 export { TodoForm } from "./todoForm";
-export { HeaderBarIcon, TabBarIcon } from "./navigation";
+export { HeaderBarIcons, TabBarIcon } from "./navigation";

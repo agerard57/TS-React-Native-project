@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { HeaderBarIcon, TabBarIcon } from "../components";
+import { HeaderBarIcons, TabBarIcon } from "../components";
 import { Colors } from "../constants";
 import { useColorScheme } from "../hooks";
 import {
@@ -32,9 +32,13 @@ export const BottomTabNavigator = () => {
           title: "Home",
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
-            <HeaderBarIcon
-              iconName="info-circle"
-              onPress={() => navigation.navigate("about")}
+            <HeaderBarIcons
+              options={[
+                {
+                  iconName: "info-circle",
+                  onPress: () => navigation.navigate("about"),
+                },
+              ]}
             />
           ),
         })}
@@ -47,9 +51,13 @@ export const BottomTabNavigator = () => {
             title: "Todo list",
             tabBarIcon: ({ color }) => <TabBarIcon name="bars" color={color} />,
             headerRight: () => (
-              <HeaderBarIcon
-                iconName="plus-circle"
-                onPress={() => navigation.goBack()}
+              <HeaderBarIcons
+                options={[
+                  {
+                    iconName: "plus-circle",
+                    onPress: () => navigation.navigate("todo-add"),
+                  },
+                ]}
               />
             ),
           })}
@@ -61,31 +69,62 @@ export const BottomTabNavigator = () => {
             title: "Add task",
             tabBarButton: () => null,
             headerRight: () => (
-              <HeaderBarIcon
-                iconName="times-circle"
-                onPress={() => navigation.navigate("todo-list")}
+              <HeaderBarIcons
+                options={[
+                  {
+                    iconName: "times-circle",
+                    onPress: () => navigation.navigate("todo-list"),
+                  },
+                ]}
               />
             ),
           })}
         />
       </BottomTab.Group>
-      {/*       <BottomTab.Screen
-          name="todo-edit"
-          component={TabTwoScreen}
-          options={{
-            title: "Edit task",
-            tabBarButton: () => null,
-            
-          }}
-        />       
-      */}
+      <BottomTab.Screen
+        name="todo-edit"
+        component={ViewTodoScreen}
+        options={({ navigation }: RootTabScreenProps<"todo-edit">) => ({
+          title: "Edit task",
+          tabBarButton: () => null,
+          headerRight: () => (
+            <HeaderBarIcons
+              options={[
+                {
+                  iconName: "arrow-circle-left",
+                  onPress: () => navigation.goBack(),
+                },
+              ]}
+            />
+          ),
+        })}
+      />
+
       <BottomTab.Screen
         name="todo-view"
         component={ViewTodoScreen}
-        options={{
+        options={({ navigation, route }: RootTabScreenProps<"todo-view">) => ({
           title: "View task",
           tabBarButton: () => null,
-        }}
+          headerRight: () => (
+            <>
+              <HeaderBarIcons
+                options={[
+                  {
+                    iconName: "edit",
+                    onPress: () =>
+                      navigation.navigate("todo-edit", { id: route.params.id }),
+                  },
+                  {
+                    iconName: "trash",
+                    onPress: () =>
+                      navigation.navigate("todo-edit", { id: route.params.id }),
+                  },
+                ]}
+              />
+            </>
+          ),
+        })}
       />
       <BottomTab.Screen
         name="about"
@@ -94,9 +133,13 @@ export const BottomTabNavigator = () => {
           title: "About",
           tabBarButton: () => null,
           headerRight: () => (
-            <HeaderBarIcon
-              iconName="times-circle"
-              onPress={() => navigation.goBack()}
+            <HeaderBarIcons
+              options={[
+                {
+                  iconName: "times-circle",
+                  onPress: () => navigation.goBack(),
+                },
+              ]}
             />
           ),
         })}
