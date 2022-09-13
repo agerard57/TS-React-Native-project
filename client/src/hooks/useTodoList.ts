@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { Alert, GestureResponderEvent } from "react-native";
 
 import { Todo, TodoInitializer, TodoList } from "../interfaces";
-import { deleteTodo, getTodos } from "../services";
-import { useToast } from "./useToast";
+import { getTodos } from "../services";
+import { useDeleteTodo } from "./useDeleteTodo";
 
 type TodoListManager = () => {
   todoLists: TodoList[];
@@ -13,7 +13,6 @@ type TodoListManager = () => {
 
 export const useTodoList: TodoListManager = () => {
   const navigation = useNavigation();
-  const { toast } = useToast();
 
   const [todos, setTodos] = useState<Todo[]>([TodoInitializer]);
 
@@ -28,22 +27,7 @@ export const useTodoList: TodoListManager = () => {
 
   const onDelete = (id: string) => (event: GestureResponderEvent) => {
     event.preventDefault();
-    Alert.alert("Task deletion", "Are you sure you want to delete this task?", [
-      {
-        text: "Never mind !",
-        onPress: () => {},
-        style: "cancel",
-      },
-      {
-        text: "Delete",
-        style: "destructive",
-        onPress: () => {
-          deleteTodo(id);
-          setTodos(todos.filter((todo) => todo._id !== id));
-          toast("Task deleted", "alert");
-        },
-      },
-    ]);
+    useDeleteTodo(id, setTodos);
   };
 
   useEffect(() => {

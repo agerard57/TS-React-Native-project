@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { HeaderBarIcons, TabBarIcon } from "../components";
 import { Colors } from "../constants";
-import { useColorScheme } from "../hooks";
+import { useColorScheme, useDeleteTodo } from "../hooks";
 import {
   HomeScreen,
   ModalAboutScreen,
@@ -118,7 +118,7 @@ export const BottomTabNavigator = () => {
                   {
                     iconName: "trash",
                     onPress: () =>
-                      navigation.navigate("todo-edit", { id: route.params.id }),
+                      useDeleteTodo(route.params.id, undefined, navigation),
                   },
                 ]}
               />
