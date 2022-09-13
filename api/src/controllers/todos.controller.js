@@ -27,7 +27,7 @@ exports.getOne = (req, res) => {
   TodosModel.findById(id)
     .lean()
     .then((todo) => {
-      if (todo.imageName !== "") {
+      if (todo.imageName && todo.imageName !== "") {
         const image = require("fs").readFileSync(
           path.join(__dirname, `../../public/images/${todo.imageName}`)
         );
@@ -40,6 +40,11 @@ exports.getOne = (req, res) => {
         delete todo.imageName;
       }
       res.json(todo);
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: error,
+      });
     });
 };
 
