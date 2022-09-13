@@ -4,21 +4,18 @@ import { StyleSheet } from "react-native";
 import { TodoTypes } from "../../types";
 import { Themed } from "../Themed";
 
-export const ListDisplay = ({
-  currentList,
-}: {
+type Props = {
   currentList: TodoTypes["list"];
-}) => {
+};
+
+export const ListDisplay = ({ currentList }: Props) => {
   const { Text, View } = Themed;
+
   const displayedLists = {
     TODO: "To do",
     "IN PROGRESS": "In progress",
     DONE: "Done",
   };
-  // the currentList that is in displayList will be displayed in bold and the others will be displayed in normal
-  // Desired output: To do | In progress | Done
-  // Add separator between the lists
-  // Match currentList with the keys of displayedLists
 
   return (
     <View style={styles.listsContainer}>

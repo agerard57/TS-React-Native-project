@@ -6,4 +6,4 @@ export { HomeContent } from "./HomeContent";
 export { ListContainer } from "./todoList";
 export { TodoForm } from "./todoForm";
 export { HeaderBarIcons, TabBarIcon } from "./navigation";
-export { ListDisplay } from "./viewForm";
+export { ViewContainer, BackButton } from "./todoView";

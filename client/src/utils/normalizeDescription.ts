@@ -1,4 +1,12 @@
-export const normalizeDescription = (description?: string, crop?: boolean) =>
+type NormalizeDescriptionManager = (
+  description?: string,
+  crop?: boolean
+) => string;
+
+export const normalizeDescription: NormalizeDescriptionManager = (
+  description?,
+  crop?
+) =>
   description && description.length > 0
     ? crop
       ? description.length > 100

@@ -1,11 +1,11 @@
 import moment from "moment";
 
-type NormalizeDate = (
+type NormalizeDateManager = (
   date: Date,
   dateFormat: "numericDate" | "longDate"
 ) => string;
 
-export const normalizeDate: NormalizeDate = (date, dateFormat) => {
+export const normalizeDate: NormalizeDateManager = (date, dateFormat) => {
   switch (dateFormat) {
     case "numericDate":
       //Converts ISO date into a human readable date (eg. 09/13/2022).
