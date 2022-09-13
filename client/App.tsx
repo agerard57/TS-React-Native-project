@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 import { RootSiblingParent } from "react-native-root-siblings";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { useCachedResources, useColorScheme, Navigation } from "./src";
 

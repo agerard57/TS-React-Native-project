@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "TS-React-Native-project",
-    "slug": "TS-React-Native-project",
+    "name": "ts-react-native-project",
+    "slug": "ts-react-native-project",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./public/images/icon.png",
-    "scheme": "TS-React-Native-project",
+    "scheme": "ts-react-native-project",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./public/images/splash.png",

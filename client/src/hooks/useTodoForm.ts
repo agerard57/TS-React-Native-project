@@ -1,5 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import * as ImagePicker from "expo-image-picker";
+import { useEffect } from "react";
+import { Platform } from "react-native";
 import * as yup from "yup";
 
 import { postTodo } from "../services";
@@ -18,13 +20,16 @@ export const useTodoForm = () => {
   }: FormTypes["pickImage"]) => {
     // No permissions needed to launch the library
     const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [16, 9],
       quality: 1,
+      base64: true,
+      // iOS only
+      allowsMultipleSelection: false,
     });
 
-    if (!result.cancelled) {
+    if (!result.cancelled && result.base64) {
       // Check if the image is less than 1MB
       if (result.uri.length > 3000000) {
         toast(
@@ -34,8 +39,25 @@ export const useTodoForm = () => {
         return;
       }
 
-      setFieldValue("image.fileName", result.uri);
+      // Get extension from blob
+      const blob = await fetch(result.uri).then((r) => r.blob());
+      const blobExtension = blob.type.split("/").pop();
+      // append blob extension to the base64 string
+      const base64 = `data:image/${blobExtension};base64,${result.base64}`;
+      console.log({
+        blobExtension: blobExtension,
+        imageFile: base64,
+        imageFileName: `${Math.random()
+          .toString(36)
+          .substring(7)}.${blobExtension}`,
+      });
+      setFieldValue(
+        "image.fileName",
+        `${Math.random().toString(36).substring(7)}.${blobExtension}`
+      );
+      setFieldValue("image.file", base64);
       setFieldTouched("image", true);
+
       toast("Your image has been uploaded!", "success");
     }
   };
@@ -47,6 +69,7 @@ export const useTodoForm = () => {
     setFieldValue,
   }: FormTypes["pickImage"]) => {
     setFieldValue("image.fileName", "");
+    setFieldValue("image.file", "");
     setFieldTouched("image", false);
   };
 

@@ -16,12 +16,13 @@ export const HeaderBarIcons = ({ options }: { options: Props[] }) => {
 
   return (
     <View style={styles.container}>
-      {options.map((options) => (
+      {options.map((options, key) => (
         <Pressable
           onPress={options.onPress}
           style={({ pressed }) => ({
             opacity: pressed ? 0.5 : 1,
           })}
+          key={key}
         >
           <FontAwesome
             name={options.iconName}

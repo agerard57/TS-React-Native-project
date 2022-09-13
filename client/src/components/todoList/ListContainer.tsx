@@ -14,21 +14,23 @@ export const ListContainer = ({ listName, todos, onDelete }: Props) => {
   const { Text, View } = Themed;
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{listName}</Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
-      <FlatList
-        data={todos}
-        renderItem={({ item }) => <TodoCard todo={item} onDelete={onDelete} />}
-        /* extraData={selectedId} */
-        keyExtractor={(item) => item._id}
-        ListEmptyComponent={() => <Text>No todos</Text>}
-      />
-    </View>
+    <>
+      <View style={styles.container}>
+        <View style={styles.titleContainer}>
+          <View style={styles.titleLine} />
+          <Text style={styles.title}>{listName}</Text>
+          <View style={styles.titleLine} />
+        </View>
+        <FlatList
+          data={todos}
+          renderItem={({ item }) => (
+            <TodoCard todo={item} onDelete={onDelete} />
+          )}
+          keyExtractor={(item) => item._id}
+          ListEmptyComponent={() => <Text>No todos</Text>}
+        />
+      </View>
+    </>
   );
 };
 
@@ -37,20 +39,21 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    marginVertical: 30,
-    backgroundColor: "none",
     padding: 20,
-    borderColor: "grey",
-    borderWidth: 1,
+    marginVertical: 20,
     borderRadius: 5,
   },
+  titleContainer: { flexDirection: "row", paddingBottom: 10 },
   title: {
     fontSize: 20,
+    paddingHorizontal: 5,
+    textAlign: "center",
     fontWeight: "bold",
   },
-  separator: {
-    marginVertical: 20,
-    height: 1,
-    width: "80%",
+  titleLine: {
+    backgroundColor: "#dcdcdc",
+    height: 2,
+    flex: 1,
+    alignSelf: "center",
   },
 });

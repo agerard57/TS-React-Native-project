@@ -27,5 +27,6 @@ const styles = StyleSheet.create({
     marginVertical: 30,
     marginHorizontal: 20,
     justifyContent: "flex-end",
+    backgroundColor: "transparent",
   },
 });

@@ -1,0 +1,1 @@
+export { cropDescription } from "./cropDescription";

@@ -7,8 +7,7 @@ module.exports = function routes(app) {
   // Middlewares instantiated
   app.use(cors());
   app.use(morgan("tiny"));
-  app.use(express.json());
-  app.use(express.json({ extended: true }));
+  app.use(express.json({ extended: true, limit: "5mb" }));
 
   // ///////
   // Routes

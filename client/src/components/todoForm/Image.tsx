@@ -18,14 +18,14 @@ export const Image = ({
   return (
     <>
       <Text style={styles.label}>Image</Text>
-      {values.image.fileName && (
+      {values.image.file && (
         <DefaultImage
-          source={{ uri: values.image.fileName }}
+          source={{ uri: values.image.file }}
           style={styles.image}
         />
       )}
       <View style={styles.buttons}>
-        {!values.image.fileName ? (
+        {!values.image.file ? (
           <TouchableOpacity
             style={styles.button}
             onPress={() => pickImage({ setFieldTouched, setFieldValue })}
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     width: 1280 / 4,
     height: 720 / 4,
     alignSelf: "center",
+    resizeMode: "contain",
   },
   label: {
     fontSize: 16,

@@ -7,7 +7,8 @@ export interface Todo {
   description?: string;
   fav: boolean;
   author: string;
-  imageUrl?: string;
+  image?: { fileName: string; file: string };
+  createdAt: Date;
 }
 
 export interface TodoList {
@@ -19,8 +20,7 @@ export const TodoInitializer = {
   _id: "",
   list: "TODO" as TodoTypes["list"],
   title: "",
-  description: "",
   fav: false,
   author: "",
-  imageUrl: "",
+  createdAt: new Date(),
 };

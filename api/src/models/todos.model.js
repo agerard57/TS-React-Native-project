@@ -10,8 +10,9 @@ const TodosSchema = mongoose.Schema(
       set: (list) => list.toUpperCase(),
     },
     fav: { type: Boolean, default: false },
-    imageUrl: { type: String },
+    imageName: { type: String },
     author: { type: String, required: true },
+    createdAt: { type: Date, default: Date.now, required: true },
   },
   { toJSON: { getters: true } }
 );

@@ -23,7 +23,7 @@ type PickImageProps = {
 type Values = {
   title: string;
   content: string;
-  image: { fileName: string };
+  image: { fileName: string; file: string };
   list: TodoTypes["list"];
   author: string;
 };

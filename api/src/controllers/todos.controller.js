@@ -1,12 +1,12 @@
 const TodosModel = require("../models/todos.model");
+const path = require("path");
 
 const todoOptions = (request) => {
   return {
     title: request.title,
     description: request.content,
     list: request.list,
-    User: request.image.fileName,
-    imageUrl: request.image.image.fileName,
+    imageName: request.image.fileName,
     author: request.author,
   };
 };
@@ -24,17 +24,45 @@ exports.getAll = (_req, res) => {
 exports.getOne = (req, res) => {
   const id = req.params.id;
 
-  TodosModel.findById(id, (err, todo) => {
-    if (err) res.send(err);
-    res.json(todo);
-  });
+  TodosModel.findById(id)
+    .lean()
+    .then((todo) => {
+      if (todo.imageName !== "") {
+        const image = require("fs").readFileSync(
+          path.join(__dirname, `../../public/images/${todo.imageName}`)
+        );
+        todo.image = image.toString("base64");
+        const ext = todo.imageName.split(".").pop();
+        todo.image = {
+          fileName: todo.imageName,
+          file: `data:image/${ext};base64,${todo.image}`,
+        };
+        delete todo.imageName;
+      }
+      res.json(todo);
+    });
 };
 
 // //////////////////
 // Add controller
 exports.add = (req, res) => {
-  const todo = new TodosModel(todoOptions(req.body));
+  // Save base64 image to disk
+  if (req.body.image.file !== "") {
+    const base64Data = req.body.image.file.replace(
+      /^data:([A-Za-z-+/]+);base64,/,
+      ""
+    );
+    console.log(req.body.image.fileName);
+    const fileName = req.body.image.fileName;
+    const filePath = path.join(__dirname, `../../public/images/${fileName}`);
+    require("fs").writeFile(filePath, base64Data, "base64", (err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+  }
 
+  const todo = new TodosModel(todoOptions(req.body));
   todo
     .save()
     .then((_message) => {
@@ -42,7 +70,7 @@ exports.add = (req, res) => {
     })
     .catch((_error) => {
       res.status(500);
-      res.json("An error occured!");
+      res.json("An error occurred!");
     });
 };
 

@@ -3,10 +3,12 @@ import {
   Button,
   GestureResponderEvent,
   TouchableHighlight,
+  useColorScheme,
 } from "react-native";
 import { StyleSheet } from "react-native";
 
 import { Todo } from "../../interfaces";
+import { cropDescription } from "../../utils";
 import { Themed } from "../Themed";
 
 type Props = {
@@ -18,27 +20,23 @@ export const TodoCard = ({ todo, onDelete }: Props) => {
   const navigation = useNavigation();
 
   const { Text, View } = Themed;
-
-  const cropDescription = (description: string) => {
-    if (description.length > 100) {
-      return description.slice(0, 100) + "...";
-    }
-    return description;
-  };
+  const color = useColorScheme();
 
   return (
     <TouchableHighlight
       style={styles.todoContainer}
+      underlayColor={color === "light" ? "#dddddd" : "#333333"}
+      activeOpacity={1}
       onPress={() => {
         navigation.navigate("todo-view", { id: todo._id });
       }}
     >
-      <View style={styles.todoCard}>
+      <View style={[styles.todoCard, styles.transparent]}>
         <>
-          <View>
+          <View style={styles.transparent}>
             <Text style={styles.todoCardTitle}>{todo.title}</Text>
             <View style={styles.separator} />
-            <View style={styles.todoCardContentContainer}>
+            <View style={[styles.todoCardContentContainer, styles.transparent]}>
               <Text>
                 {todo.description
                   ? cropDescription(todo.description)
@@ -46,7 +44,7 @@ export const TodoCard = ({ todo, onDelete }: Props) => {
               </Text>
               <Text style={styles.todoCardAuthor}>By {todo.author}</Text>
               <View style={styles.contentSeparator} />
-              <View style={styles.buttons}>
+              <View style={[styles.buttons, styles.transparent]}>
                 <View style={styles.button}>
                   <Button
                     title="Edit"
@@ -75,15 +73,8 @@ const styles = StyleSheet.create({
   todoContainer: {
     alignItems: "center",
     justifyContent: "center",
-    borderColor: "#a9a9a9",
+    borderColor: "#d3d3d3",
     borderRadius: 10,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
     borderWidth: 1,
     marginVertical: 10,
   },
@@ -101,7 +92,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#d1d3d4",
   },
   todoCard: {
-    width: "98%",
+    width: "100%",
     margin: 10,
   },
   todoCardContentContainer: {
@@ -114,10 +105,8 @@ const styles = StyleSheet.create({
   },
   todoCardTitle: {
     fontSize: 18,
-    paddingTop: 10,
     paddingHorizontal: 10,
     fontWeight: "bold",
-    flex: 1,
     textAlign: "center",
   },
   button: { width: "40%" },
@@ -125,4 +114,5 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-evenly",
   },
+  transparent: { backgroundColor: "transparent" },
 });
