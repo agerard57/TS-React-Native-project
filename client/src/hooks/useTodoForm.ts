@@ -1,7 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
 import * as ImagePicker from "expo-image-picker";
-import { useEffect } from "react";
-import { Platform } from "react-native";
 import * as yup from "yup";
 
 import { postTodo } from "../services";
@@ -9,7 +7,6 @@ import { FormTypes } from "../types";
 import { useToast } from "./useToast";
 
 export const useTodoForm = () => {
-  const { toast } = useToast();
   const navigation = useNavigation();
 
   /////////////////////////////
@@ -32,7 +29,7 @@ export const useTodoForm = () => {
     if (!result.cancelled && result.base64) {
       // Check if the image is less than 1MB
       if (result.uri.length > 3000000) {
-        toast(
+        useToast(
           "The image is too large. Your image must be less than 3MB in size.",
           "error"
         );
@@ -58,7 +55,7 @@ export const useTodoForm = () => {
       setFieldValue("image.file", base64);
       setFieldTouched("image", true);
 
-      toast("Your image has been uploaded!", "success");
+      useToast("Your image has been uploaded!", "success");
     }
   };
 
@@ -95,10 +92,10 @@ export const useTodoForm = () => {
   const handleSubmit = (values: FormTypes["values"]) => {
     postTodo(values).then((res) => {
       if (res) {
-        toast(res, "success");
+        useToast(res, "success");
         navigation.navigate("todo-list");
       } else {
-        toast("Something went wrong", "error");
+        useToast("Something went wrong", "error");
       }
     });
   };
