@@ -18,8 +18,9 @@ export const SelectInput = ({
           fontWeight: "bold",
         },
       }}
+      placeholder={{}}
       onValueChange={(value) => {
-        value !== null
+        value !== "null"
           ? (setFieldValue("list", value), setFieldTouched("list", true))
           : (setFieldValue("list", ""), setFieldTouched("list", false));
       }}
@@ -28,6 +29,7 @@ export const SelectInput = ({
         { label: "In progress...", value: "IN PROGRESS" },
         { label: "Done !", value: "DONE" },
       ]}
+      value={values.list}
     />
   );
 };

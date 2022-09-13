@@ -8,7 +8,7 @@ import {
 import { StyleSheet } from "react-native";
 
 import { Todo } from "../../interfaces";
-import { cropDescription } from "../../utils";
+import { normalizeDescription } from "../../utils";
 import { Themed } from "../Themed";
 
 type Props = {
@@ -37,10 +37,8 @@ export const TodoCard = ({ todo, onDelete }: Props) => {
             <Text style={styles.todoCardTitle}>{todo.title}</Text>
             <View style={styles.separator} />
             <View style={[styles.todoCardContentContainer, styles.transparent]}>
-              <Text>
-                {todo.description
-                  ? cropDescription(todo.description)
-                  : "No description"}
+              <Text style={styles.description}>
+                {normalizeDescription(todo.description, true)}
               </Text>
               <Text style={styles.todoCardAuthor}>By {todo.author}</Text>
               <View style={styles.contentSeparator} />
@@ -90,6 +88,9 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     height: 1,
     backgroundColor: "#d1d3d4",
+  },
+  description: {
+    textAlign: "justify",
   },
   todoCard: {
     width: "100%",
