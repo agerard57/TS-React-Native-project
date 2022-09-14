@@ -7,7 +7,35 @@
 
 ## Table of Contents
 
-ddd
+- [TS_React-Native-Kanban](#ts_react-native-kanban)
+  - [Table of Contents](#table-of-contents)
+  - [Starting the project](#starting-the-project)
+    - [Downloading and running the project](#downloading-and-running-the-project)
+      - [Setup the automatic project launch](#setup-the-automatic-project-launch)
+      - [Manual project launch](#manual-project-launch)
+  - [Client](#client)
+    - [Core features](#core-features)
+      - [Color themes](#color-themes)
+      - [Header bar](#header-bar)
+      - [Navigation bar](#navigation-bar)
+      - [Alert](#alert)
+      - [Toaster](#toaster)
+    - [Home page](#home-page)
+    - [Todo list](#todo-list)
+      - [Header button](#header-button)
+      - [Tables](#tables)
+      - [Cards](#cards)
+    - [View todo](#view-todo)
+      - [Contents](#contents)
+    - [Add/Edit todo](#addedit-todo)
+    - [About page](#about-page)
+  - [API](#api)
+  - [Misc](#misc)
+    - [Project tree](#project-tree)
+    - [Dependencies](#dependencies)
+      - [Root dependencies](#root-dependencies)
+      - [Api dependencies](#api-dependencies)
+      - [Client dependencies](#client-dependencies)
 
 ## Starting the project
 
