@@ -103,7 +103,7 @@ export const TodoForm = ({ route, mode }: Props) => {
             </View>
             <Button
               onPress={() => submitForm()}
-              title="Add your task!"
+              title={mode === "add" ? "Add your task!" : "Edit your task!"}
               disabled={!isValid || values.title === ""}
             />
           </>
