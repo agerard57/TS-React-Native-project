@@ -51,22 +51,6 @@ exports.getOne = (req, res) => {
 // //////////////////
 // Add controller
 exports.add = (req, res) => {
-  // Save base64 image to disk
-  if (req.body.image.file !== "") {
-    const base64Data = req.body.image.file.replace(
-      /^data:([A-Za-z-+/]+);base64,/,
-      ""
-    );
-    console.log(req.body.image.fileName);
-    const fileName = req.body.image.fileName;
-    const filePath = path.join(__dirname, `../../public/images/${fileName}`);
-    require("fs").writeFile(filePath, base64Data, "base64", (err) => {
-      if (err) {
-        console.log(err);
-      }
-    });
-  }
-
   const todo = new TodosModel(todoOptions(req.body));
   todo
     .save()
@@ -74,8 +58,7 @@ exports.add = (req, res) => {
       res.json("Your todo has been added!");
     })
     .catch((_error) => {
-      res.status(500);
-      res.json("An error occurred!");
+      res.status(500).json("An error occurred!");
     });
 };
 
@@ -85,12 +68,11 @@ exports.update = (req, res) => {
   const findById = { _id: req.params.id };
 
   TodosModel.findOneAndReplace(findById, todoOptions(req.body), { new: true })
-    .then((message) => {
-      res.json(message);
+    .then((_message) => {
+      res.json("Your todo has been updated!");
     })
     .catch((error) => {
-      res.status(500);
-      res.json(error);
+      res.status(500).json(error);
     });
 };
 
@@ -103,5 +85,16 @@ exports.delete = (req, res) => {
     res.json({
       message: "Deleted!",
     });
+  });
+};
+
+// //////////////////
+// Update favorite controller
+exports.updateFavorite = (req, res) => {
+  const id = req.params.id;
+  TodosModel.findById(id).then((todo) => {
+    todo.fav = !todo.fav;
+    todo.save();
+    res.json("Your todo has been updated!");
   });
 };
