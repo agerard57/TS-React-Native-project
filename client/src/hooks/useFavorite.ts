@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { getTodoByUserId } from "../services";
 import { favoriteTodo } from "../services/favoriteTodo";
+import { useToast } from "./useToast";
 
 export const useFavorite = () => {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
@@ -18,6 +19,12 @@ export const useFavorite = () => {
   const favorite = (id: string) => {
     favoriteTodo(id, isFavorite).then((_todo) => {
       setIsFavorite(!isFavorite);
+      useToast(
+        `Your todo is ${
+          isFavorite ? "no longer a favorite" : "now a favorite"
+        }`,
+        isFavorite ? "alert" : "success"
+      );
     });
   };
 

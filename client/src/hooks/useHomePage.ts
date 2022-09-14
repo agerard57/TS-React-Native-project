@@ -2,28 +2,19 @@ import { useNavigation } from "@react-navigation/native";
 import { useState, useEffect } from "react";
 import { GestureResponderEvent } from "react-native";
 
-import { Todo, TodoInitializer, TodoList } from "../interfaces";
+import { Todo, TodoInitializer } from "../interfaces";
 import { getTodos } from "../services";
 import { useDeleteTodo } from "./useDeleteTodo";
 
-type TodoListManager = () => {
-  todoLists: TodoList[];
-  onDelete(id: string): (event: GestureResponderEvent) => void;
-};
-
-export const useTodoList: TodoListManager = () => {
+export const useHomePage = () => {
   const navigation = useNavigation();
 
   const [todos, setTodos] = useState<Todo[]>([TodoInitializer]);
 
-  const lists = ["TODO", "IN PROGRESS", "DONE"] as const;
-
-  const todoLists: TodoList[] = lists.map((listName) => {
-    return {
-      listName,
-      todos: todos.filter((todo) => todo.list === listName),
-    };
-  });
+  const favList = {
+    listName: "FAVORITES",
+    todos: todos.filter((todo) => todo.fav === true),
+  };
 
   const onDelete = (id: string) => (event: GestureResponderEvent) => {
     event.preventDefault();
@@ -41,5 +32,5 @@ export const useTodoList: TodoListManager = () => {
     return willFocusSubscription;
   }, []);
 
-  return { todoLists, onDelete };
+  return { favList, onDelete };
 };

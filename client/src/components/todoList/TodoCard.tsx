@@ -40,7 +40,7 @@ export const TodoCard = ({ todo, onDelete }: Props) => {
             <Text style={styles.todoCardTitle}>{todo.title}</Text>
             <View style={styles.separator} />
             <View style={[styles.todoCardContentContainer, styles.transparent]}>
-              <View style={styles.iconsContainer}>
+              <View style={[styles.iconsContainer, styles.transparent]}>
                 {todo.fav && (
                   <FontAwesome
                     size={20}
@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
   },
   description: {
     textAlign: "justify",
+    lineHeight: 25,
   },
   todoCard: {
     width: "100%",
