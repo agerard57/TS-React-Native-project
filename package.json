@@ -4,10 +4,10 @@
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
-    "install-all": "npm run clean && npm i && npm --prefix ./api i && npm --prefix ./client i",
+    "install-all": "npm run clean-all && npm i && npm --prefix ./api i && npm --prefix ./client i",
     "start-all": "concurrently \"npm run start:api\" \"npm run start:client\"",
     "clean": "rm -rf node_modules",
-    "clean-all": "npm --prefix ./api run clean && npm --prefix ./client run clean",
+    "clean-all": "npm run clean && npm --prefix ./api run clean && npm --prefix ./client run clean",
     "start:api": "npm --prefix ./api run start",
     "start:client": "npm --prefix ./client run start"
   },
