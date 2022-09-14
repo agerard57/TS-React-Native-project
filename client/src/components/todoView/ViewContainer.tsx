@@ -26,7 +26,7 @@ export const ViewContainer = ({ todo }: { todo: Todo }) => {
           <Text style={styles.title}>{todo.title}</Text>
         </View>
         <Text style={styles.createdAt}>
-          Created: {normalizeDate(todo.createdAt, "longDate")}
+          Last update: {normalizeDate(todo.createdAt, "longDate")}
         </Text>
       </View>
       <View style={styles.part}>

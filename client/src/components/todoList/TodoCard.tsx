@@ -1,12 +1,14 @@
+import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import {
   Button,
   GestureResponderEvent,
   TouchableHighlight,
-  useColorScheme,
 } from "react-native";
 import { StyleSheet } from "react-native";
 
+import { Colors } from "../../constants";
+import { useColorScheme } from "../../hooks";
 import { Todo } from "../../interfaces";
 import { normalizeDescription } from "../../utils";
 import { Themed } from "../Themed";
@@ -18,6 +20,7 @@ type Props = {
 
 export const TodoCard = ({ todo, onDelete }: Props) => {
   const navigation = useNavigation();
+  const colorScheme = useColorScheme();
 
   const { Text, View } = Themed;
   const color = useColorScheme();
@@ -37,6 +40,24 @@ export const TodoCard = ({ todo, onDelete }: Props) => {
             <Text style={styles.todoCardTitle}>{todo.title}</Text>
             <View style={styles.separator} />
             <View style={[styles.todoCardContentContainer, styles.transparent]}>
+              <View style={styles.iconsContainer}>
+                {todo.fav && (
+                  <FontAwesome
+                    size={20}
+                    style={styles.imageIcon}
+                    name="star"
+                    color={"#4169E1"}
+                  />
+                )}
+                {todo.imageName && (
+                  <FontAwesome
+                    size={20}
+                    style={styles.imageIcon}
+                    name="image"
+                    color={Colors[colorScheme].text}
+                  />
+                )}
+              </View>
               <Text style={styles.description}>
                 {normalizeDescription(todo.description, true)}
               </Text>
@@ -76,6 +97,19 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginVertical: 10,
   },
+  imageIcon: {
+    marginBottom: 10,
+    marginRight: 10,
+  },
+  iconsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  todoCardTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
   separator: {
     marginVertical: 10,
     width: "100%",
@@ -103,12 +137,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     paddingTop: 10,
     color: "grey",
-  },
-  todoCardTitle: {
-    fontSize: 18,
-    paddingHorizontal: 10,
-    fontWeight: "bold",
-    textAlign: "center",
   },
   button: { width: "40%" },
   buttons: {

@@ -16,7 +16,7 @@ module.exports = function consoleMessage(port) {
 
   const url = (port) => `http://localhost:${port}`;
 
-  console.log(
+  console.info(
     `App now ${bold}running${resetStyles} on port ${blue}${port}${resetStyles}\n${grey}URL : ${url(
       port
     )}${resetStyles}`

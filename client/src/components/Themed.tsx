@@ -6,8 +6,9 @@ import { ThemedTypes } from "../types";
 const Text = (props: ThemedTypes["TextProps"]) => {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
+  const customFont = { fontFamily: "Roboto" };
 
-  return <DefaultText style={[{ color }, style]} {...otherProps} />;
+  return <DefaultText style={[{ color }, style, customFont]} {...otherProps} />;
 };
 
 const View = (props: ThemedTypes["ViewProps"]) => {

@@ -4,11 +4,11 @@
     "slug": "ts-react-native-project",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./public/images/icon.png",
+    "icon": "public/images/icon.png",
     "scheme": "ts-react-native-project",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./public/images/splash.png",
+      "image": "public/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,12 +21,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./public/images/adaptive-icon.png",
+        "foregroundImage": "public/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./public/images/favicon.png"
+      "favicon": "public/images/favicon.png"
     }
   }
 }

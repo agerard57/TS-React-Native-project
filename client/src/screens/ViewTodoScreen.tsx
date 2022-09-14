@@ -1,6 +1,5 @@
 import { ScrollView, StyleSheet } from "react-native";
 
-import { Themed } from "../components";
 import { ViewContainer, BackButton } from "../components";
 import { useTodoScreen } from "../hooks";
 
@@ -10,6 +9,7 @@ type Props = {
 
 export const ViewTodoScreen = ({ route }: Props) => {
   const { todo } = useTodoScreen(route);
+
   return (
     <ScrollView style={styles.scrollView}>
       <ViewContainer todo={todo} />

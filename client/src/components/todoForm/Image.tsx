@@ -4,7 +4,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import { useTodoForm } from "../../hooks";
+import { useImagePicker } from "../../hooks";
 import { FormTypes } from "../../types";
 import { Themed } from "../Themed";
 
@@ -14,7 +14,9 @@ export const Image = ({
   setFieldValue,
 }: FormTypes["input"]) => {
   const { Text, View } = Themed;
-  const { pickImage, removeImage } = useTodoForm();
+
+  const { pickImage, removeImage } = useImagePicker();
+
   return (
     <>
       <Text style={styles.label}>Image</Text>

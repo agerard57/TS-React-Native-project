@@ -15,7 +15,7 @@ type InputProps = {
   setFieldValue: FormikTypes["setFieldValue"];
 };
 
-type PickImageProps = {
+type FieldValuesProps = {
   setFieldTouched: FormikTypes["setFieldTouched"];
   setFieldValue: FormikTypes["setFieldValue"];
 };
@@ -28,9 +28,12 @@ type Values = {
   author: string;
 };
 
+type Modes = "add" | "edit";
+
 export type FormTypes = {
   field: CustomInputProps;
-  pickImage: PickImageProps;
+  fieldValues: FieldValuesProps;
   input: InputProps;
+  modes: Modes;
   values: Values;
 };

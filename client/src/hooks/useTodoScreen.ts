@@ -17,9 +17,13 @@ export const useTodoScreen = (route: { params: { id: string } }) => {
   useEffect(() => {
     // if id is a string, it will return a todo
     if (typeof id === "string") {
-      getTodoByUserId(id).then((todo: Todo) => {
-        todo ? setTodo(todo) : navigation.navigate("notFound");
+      const willFocusSubscription = navigation.addListener("focus", () => {
+        getTodoByUserId(id).then((todo: Todo) => {
+          todo ? setTodo(todo) : navigation.navigate("notFound");
+        });
       });
+
+      return willFocusSubscription;
     }
   }, [route.params.id]);
 

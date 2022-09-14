@@ -7,6 +7,7 @@ export interface Todo {
   description?: string;
   fav: boolean;
   author: string;
+  imageName?: string;
   image?: { fileName: string; file: string };
   createdAt: Date;
 }

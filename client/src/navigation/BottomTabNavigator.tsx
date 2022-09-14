@@ -1,8 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useState } from "react";
 
 import { HeaderBarIcons, TabBarIcon } from "../components";
 import { Colors } from "../constants";
-import { useColorScheme, useDeleteTodo } from "../hooks";
+import { useColorScheme, useDeleteTodo, useFavorite } from "../hooks";
 import {
   HomeScreen,
   ModalAboutScreen,
@@ -17,6 +18,7 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 export const BottomTabNavigator = () => {
   const colorScheme = useColorScheme();
+  const { favoriteStatus, favorite } = useFavorite();
 
   return (
     <BottomTab.Navigator
@@ -64,7 +66,9 @@ export const BottomTabNavigator = () => {
         />
         <BottomTab.Screen
           name="todo-add"
-          component={TodoFormScreen}
+          children={({ route }) => (
+            <TodoFormScreen route={route} mode={"add"} />
+          )}
           options={({ navigation }: RootTabScreenProps<"todo-add">) => ({
             title: "Add task",
             tabBarButton: () => null,
@@ -83,7 +87,7 @@ export const BottomTabNavigator = () => {
       </BottomTab.Group>
       <BottomTab.Screen
         name="todo-edit"
-        component={ViewTodoScreen}
+        children={({ route }) => <TodoFormScreen route={route} mode={"edit"} />}
         options={({ navigation }: RootTabScreenProps<"todo-edit">) => ({
           title: "Edit task",
           tabBarButton: () => null,
@@ -110,6 +114,12 @@ export const BottomTabNavigator = () => {
             <>
               <HeaderBarIcons
                 options={[
+                  {
+                    iconName: favoriteStatus(route.params.id)
+                      ? "star"
+                      : "star-o",
+                    onPress: () => favorite(route.params.id),
+                  },
                   {
                     iconName: "edit",
                     onPress: () =>

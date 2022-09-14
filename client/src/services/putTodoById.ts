@@ -3,7 +3,7 @@ import { FormTypes } from "../types";
 
 const url = (userId: string) => `${api.url}/todo/${userId}`;
 
-export const updateTodoById = async (
+export const putTodoById = async (
   values: { id: string } & FormTypes["values"]
 ) => {
   try {
