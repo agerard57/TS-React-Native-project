@@ -22,6 +22,7 @@ export const ListContainer = ({ listName, todos, onDelete }: Props) => {
           <View style={styles.titleLine} />
         </View>
         <FlatList
+          style={styles.list}
           data={todos}
           renderItem={({ item }) => (
             <TodoCard todo={item} onDelete={onDelete} />
@@ -55,5 +56,8 @@ const styles = StyleSheet.create({
     height: 2,
     flex: 1,
     alignSelf: "center",
+  },
+  list: {
+    width: "100%",
   },
 });
