@@ -35,54 +35,52 @@ export const TodoCard = ({ todo, onDelete }: Props) => {
       }}
     >
       <View style={[styles.todoCard, styles.transparent]}>
-        <>
-          <View style={styles.transparent}>
-            <Text style={styles.todoCardTitle}>{todo.title}</Text>
-            <View style={styles.separator} />
-            <View style={[styles.todoCardContentContainer, styles.transparent]}>
-              <View style={[styles.iconsContainer, styles.transparent]}>
-                {todo.fav && (
-                  <FontAwesome
-                    size={20}
-                    style={styles.imageIcon}
-                    name="star"
-                    color={"#4169E1"}
-                  />
-                )}
-                {todo.imageName && (
-                  <FontAwesome
-                    size={20}
-                    style={styles.imageIcon}
-                    name="image"
-                    color={Colors[colorScheme].text}
-                  />
-                )}
-              </View>
-              <Text style={styles.description}>
-                {normalizeDescription(todo.description, true)}
-              </Text>
-              <Text style={styles.todoCardAuthor}>By {todo.author}</Text>
-              <View style={styles.contentSeparator} />
-              <View style={[styles.buttons, styles.transparent]}>
-                <View style={styles.button}>
-                  <Button
-                    title="Edit"
-                    onPress={() => {
-                      navigation.navigate("todo-edit", { id: todo._id });
-                    }}
-                  />
-                </View>
-                <View style={styles.button}>
-                  <Button
-                    title="Delete"
-                    color="#ff5c5c"
-                    onPress={onDelete(todo._id)}
-                  />
-                </View>
-              </View>
+        <Text style={styles.todoCardTitle}>{todo.title}</Text>
+        <View style={styles.separator} />
+        <View style={[styles.todoCardContentContainer, styles.transparent]}>
+          <View style={[styles.iconsContainer, styles.transparent]}>
+            <>
+              {todo.fav && (
+                <FontAwesome
+                  size={20}
+                  style={styles.imageIcon}
+                  name="star"
+                  color={"#4169E1"}
+                />
+              )}
+              {todo.imageName && (
+                <FontAwesome
+                  size={20}
+                  style={styles.imageIcon}
+                  name="image"
+                  color={Colors[colorScheme].text}
+                />
+              )}
+            </>
+          </View>
+          <Text style={styles.description}>
+            {normalizeDescription(todo.description, true)}
+          </Text>
+          <Text style={styles.todoCardAuthor}>By {todo.author}</Text>
+          <View style={styles.contentSeparator} />
+          <View style={[styles.buttons, styles.transparent]}>
+            <View style={styles.button}>
+              <Button
+                title="Edit"
+                onPress={() => {
+                  navigation.navigate("todo-edit", { id: todo._id });
+                }}
+              />
+            </View>
+            <View style={styles.button}>
+              <Button
+                title="Delete"
+                color="#ff5c5c"
+                onPress={onDelete(todo._id)}
+              />
             </View>
           </View>
-        </>
+        </View>
       </View>
     </TouchableHighlight>
   );
