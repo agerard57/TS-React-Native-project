@@ -2,7 +2,7 @@
 
 ![TS_React-Native-Kanban](https://user-images.githubusercontent.com/56207146/190213685-8b47d3f8-4b31-411d-aa69-ad825b10bb02.jpg)
 
-> :warning: **This app could only be tested with an android device**: 
+> :warning: **This app could only be tested with an android device**:
 > Some feature might look / work differently with another OS
 
 ## Table of Contents
@@ -58,22 +58,23 @@ This app is a basic kanban that explores the possibilities with React Native / E
 
 #### Color themes
 
-This project has a built-in color theme manager that checks the device's 
+This project has a built-in color theme manager that checks the device's
 color preference (light theme or dark theme) and applies it to all the pages.
 The content, however, stays the same
 
-| **Light theme**                                                                                               | **Dark theme**                                                                                                   |
-| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Light theme**                                                                                                       | **Dark theme**                                                                                                       |
+| --------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | ![Light theme](https://user-images.githubusercontent.com/56207146/190215220-fecc8c65-1adb-47cf-a3ed-2bab62ffa74d.jpg) | ![Dark theme](https://user-images.githubusercontent.com/56207146/190215206-19f2d9f3-af7e-4cc3-8c15-089687fe2439.jpg) |
 
 #### Header bar
 
-Each page has an header bar that displays the page's name. On the right, there can also be additionnal buttons (ie. about, add, edit, favorite / unfavorite).
+Each page has an header bar that displays the page's name. On the right, there can also be additional buttons (ie. about, add, edit, favorite / unfavorite).
 ![Header bar](https://user-images.githubusercontent.com/56207146/190217471-161e4172-78ad-4d25-bd36-7a245cf5506e.png)
 
 #### Navigation bar
 
 To go from one page to another, a navigation bar has been setup. You can either go to the _Home page_ or the _Todo List_ with it.
+
 > Note that the page you are on is selected and therefore colored.
 
 ![Navigation bar](https://user-images.githubusercontent.com/56207146/190216320-10ea5808-53cc-4b41-bdc1-b56f18eeb459.png)
@@ -95,7 +96,7 @@ Some features (eg. delete a task) will make a toast appear. It will appear in 3 
 
 The home page is a basic screen that welcomes the user and displays all the favorite tasks.
 
-It uses _<ScrollView>_, a wrapper unique to React Native that allows the user to scroll down
+It uses _\<ScrollView>_, a wrapper unique to React Native that allows the user to scroll down
 
 ![Home](https://user-images.githubusercontent.com/56207146/190218141-3ec4d426-2926-4833-9390-9cbddee6f015.jpg)
 
@@ -107,25 +108,27 @@ The header button will redirect you to the "Add todo" page.
 
 #### Tables
 
-This page displays all the tasks and sort them in 3 tables: 
-* TODO
-* IN PROGRESS
-* DONE
+This page displays all the tasks and sort them in 3 tables:
 
-Each table uses _<FlatList>_, a wrapper unique to React Native that allows the user pass data 
-to the component as well as a child component to lazily iterate in them and scroll, if neccessary.
+- TODO
+- IN PROGRESS
+- DONE
+
+Each table uses _\<FlatList>_, a wrapper unique to React Native that allows the user pass data
+to the component as well as a child component to lazily iterate in them and scroll, if necessary.
 The component will also render a special component if the array is empty (ie. a text saying "No todos" ).
 
-#### Cards 
+#### Cards
 
 Each card will display:
-* The title,
-* An image icon (if the task has one),
-* A star (if the task is favorite),
-* A trimmed down version of the description,
-* The author
-* An edit button
-* A delete button
+
+- The title,
+- An image icon (if the task has one),
+- A star (if the task is favorite),
+- A trimmed down version of the description,
+- The author
+- An edit button
+- A delete button
 
 ![todo_list](https://user-images.githubusercontent.com/56207146/190219585-61ba9cbd-0895-4a6e-9e3d-5b7985132920.png)
 
@@ -134,19 +137,20 @@ Each card will display:
 #### Contents
 
 Here displayed is:
-* In the header:
-  * A empty/full star icon (that will favorite / unfavorite the task)
-  * An edit icon that will redirect you to the "Edit todo" page
-  * A delete icon that will do exactly as it's name implies
-* In the container:
-  * All three list names (the task's one will be in bold)
-  * The title,
-  * The "last update" date
-  * An image (if there is one)
-  * The full description
-  * The author
-* Under the container:  
-  * A "Back" button redirects back to the list page
+
+- In the header:
+  - A empty/full star icon (that will favorite / unfavorite the task)
+  - An edit icon that will redirect you to the "Edit todo" page
+  - A delete icon that will do exactly as it's name implies
+- In the container:
+  - All three list names (the task's one will be in bold)
+  - The title,
+  - The "last update" date
+  - An image (if there is one)
+  - The full description
+  - The author
+- Under the container:
+  - A "Back" button redirects back to the list page
 
 ![View todo](https://user-images.githubusercontent.com/56207146/190223630-90964e62-9b56-4c32-9637-26e1be6737a9.png)
 
@@ -158,20 +162,20 @@ If the user edits the todo, the form will get the todo and fill what's already f
 Every input has, thanks to _yup_, a verification system that will trigger a message if not met.
 When all the verifications are correct, only then the button will be clickable.
 
-| **Add task**                                                                                               | **Edit task**                                                                                                   |
-| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Add task**                                                                                                  | **Edit task**                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | ![Add](https://user-images.githubusercontent.com/56207146/190227738-62175839-17b5-414c-a0aa-f06cb51353c7.png) | ![Edit](https://user-images.githubusercontent.com/56207146/190227623-ea66b91a-479b-458f-845c-336e945db8cf.png) |
 
 ### About page
 
-The about page is in fact a *React Native* modal that displays everything you expect
-from a traditionnal about section. I've added this repo's link.
+The about page is in fact a _React Native_ modal that displays everything you expect
+from a traditional about section. I've added this repo's link.
 
 ![About](https://user-images.githubusercontent.com/56207146/190226342-1aff1118-94b4-44ec-8cc6-f4c3708ee2df.png)
 
 ## API
 
-The API is nodeJS / ExpressJS / MongoDB based. 
+The API is nodeJS / ExpressJS / MongoDB based.
 
 It has only one model, which is "**TodosModel**":
 
@@ -334,7 +338,7 @@ It has only one model, which is "**TodosModel**":
 
 ### Dependencies
 
-#### Root
+#### Root dependencies
 
 ```json
   "devDependencies": {
@@ -342,7 +346,7 @@ It has only one model, which is "**TodosModel**":
   }
 ```
 
-#### Api
+#### Api dependencies
 
 ```json
   "dependencies": {
@@ -356,7 +360,7 @@ It has only one model, which is "**TodosModel**":
   }
 ```
 
-#### Client
+#### Client dependencies
 
 ```json
 "dependencies": {
