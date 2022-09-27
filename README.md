@@ -150,10 +150,10 @@ The component will also render a special component if the array is empty (ie. a 
 
 Each card will display:
 
-- The title,
-- An image icon (if the task has one),
-- A star (if the task is favorite),
-- A trimmed down version of the description,
+- The title
+- An image icon (if the task has one)
+- A star (if the task is favorite)
+- A trimmed down version of the description
 - The author
 - An edit button
 - A delete button
